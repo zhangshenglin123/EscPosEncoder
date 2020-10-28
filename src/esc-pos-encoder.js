@@ -530,6 +530,33 @@ class EscPosEncoder {
     }
 
     /**
+     * Beeper sound functionality
+     *
+     * @return {object}                  Return the object, for easy chaining commands
+     */
+    beeper() {
+        this._queue([
+            0x1b, 0x42, 0x05, 0x01,
+        ]);
+
+        return this;
+    }
+
+    /**
+     * Open cash drawer
+     *
+     * @return {object}                  Return the object, for easy chaining commands
+     */
+    openCashDrawer() {
+        this._queue([
+            0x1b, 0x70, 0x00,
+        ]);
+
+        return this;
+    }
+
+
+    /**
      * Add raw printer commands
      *
      * @param  {array}           data   raw bytes to be included

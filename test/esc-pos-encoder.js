@@ -214,4 +214,20 @@ describe('EscPosEncoder', function() {
             assert.deepEqual(new Uint8Array([ 28, 46 ]), result);
         });
     });
+
+    describe('beeper()', function () {
+        let result = encoder.beeper().encode();
+        
+        it('should be [ 27, 66, 5, 1 ]', function () {
+            assert.deepEqual(new Uint8Array([ 27, 66, 5, 1 ]), result);
+        });
+    });
+
+    describe('openCashDrawer()', function () {
+        let result = encoder.openCashDrawer().encode();
+        
+        it('should be [ 27, 112, 0 ]', function () {
+            assert.deepEqual(new Uint8Array([ 27, 112, 0 ]), result);
+        });
+    });
 });
