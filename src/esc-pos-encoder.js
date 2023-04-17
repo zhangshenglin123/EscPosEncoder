@@ -261,23 +261,30 @@ class EscPosEncoder {
         return this;
     }
 
-   /**
+      /**
      * Change text size
      *
      * @param  {string}          value   small or normal
      * @return {object}                  Return the object, for easy chaining commands
+     *[0x1b, 0x21, 0x30]  高度两倍，宽度两倍
+     *[0x1b, 0x21, 0x20] ,宽度两倍，高度一倍
+     *[0x1B, 0x21, 0x10]，宽度没变大，高度1.5倍  
+     * 
+     * 
      *
      */
-    size(value) {
+     size(value) {
         if (value === 'small') {
-            value = 0x01;
-        } else {
-            value = 0x00;
+            value = [0x1b, 0x4d,0x01,];
+        } else if (value === 'normal') {
+            value = [0x1b, 0x4d,0x00,];
+        }else if (value === 'large') {
+            value = [0x1b, 0x21, 0x30,];
+        }else{
+            value = [0x1b, 0x4d,0x00,];
         }
 
-        this._queue([
-            0x1b, 0x4d, value,
-        ]);
+        this._queue(value);
 
         return this;
     }
