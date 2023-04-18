@@ -275,13 +275,13 @@ class EscPosEncoder {
      */
      size(value) {
         if (value === 'small') {
-            value = [0x1b, 0x4d,0x01,];
+            value = [0x1b, 0x21,0x01,];
         } else if (value === 'normal') {
-            value = [0x1b, 0x4d,0x00,];
+            value = [0x1b, 0x21,0x00,];
         }else if (value === 'large') {
             value = [0x1b, 0x21, 0x30,];
         }else{
-            value = [0x1b, 0x4d,0x00,];
+            value = [0x1b, 0x21,0x00,];
         }
 
         this._queue(value);
